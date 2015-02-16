@@ -5,11 +5,15 @@
     <title>Socket.IO Express Example</title>
   </head>
   <body>
-    <h1>Socket.IO Express Example</h1>
+    <h1>Socket.IO Express Example  1</h1>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      var socket = io.connect();
+//	alert('test');
+//	console.log('test in html');
+      var socket = io('http://192.168.1.202:3000');
+      console.log(socket);
       socket.on('welcome', function (data) {
+	console.log('get welcom');
         console.log(data.text);
       });
     </script>

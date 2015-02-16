@@ -1,26 +1,25 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.35
-4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart chat@0.0.0
-6 info start chat@0.0.0
-7 verbose unsafe-perm in lifecycle true
-8 info chat@0.0.0 Failed to exec start script
-9 error chat@0.0.0 start: `node ./bin/www`
-9 error Exit status 8
-10 error Failed at the chat@0.0.0 start script.
-10 error This is most likely a problem with the chat package,
-10 error not with npm itself.
-10 error Tell the author that this fails on your system:
-10 error     node ./bin/www
-10 error You can get their info via:
-10 error     npm owner ls chat
-10 error There is likely additional logging output above.
-11 error System Linux 3.13.0-45-generic
-12 error command "/usr/local/bin/node" "/usr/local/bin/npm" "start"
-13 error cwd /home/leon/mynodejstest/mygitest/socketio
-14 error node -v v0.10.35
-15 error npm -v 1.4.28
-16 error code ELIFECYCLE
-17 verbose exit [ 1, true ]
+4 error install Couldn't read dependencies
+5 error Error: Invalid name: "chat/socketio"
+5 error     at ensureValidName (/usr/local/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/fixer.js:315:15)
+5 error     at Object.module.exports.fixNameField (/usr/local/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/fixer.js:204:5)
+5 error     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/normalize.js:30:38
+5 error     at Array.forEach (native)
+5 error     at normalize (/usr/local/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/normalize.js:29:15)
+5 error     at final (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:342:33)
+5 error     at then (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:126:33)
+5 error     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:331:40
+5 error     at evalmachine.<anonymous>:272:14
+5 error     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:102:5
+6 error If you need help, you may report this *entire* log,
+6 error including the npm and node versions, at:
+6 error     <http://github.com/npm/npm/issues>
+7 error System Linux 3.13.0-45-generic
+8 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install"
+9 error cwd /home/leon/mynodejstest/mygitest/socketio
+10 error node -v v0.10.35
+11 error npm -v 1.4.28
+12 verbose exit [ 1, true ]

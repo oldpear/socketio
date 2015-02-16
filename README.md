@@ -1,7 +1,7 @@
 #socketio/chat说明文档
 
 ================
-说明 intro
+简介 intro
 ================
 This is a test project created by express4.x and the purpose is to test socket.io 1.3.3 API. 
 
@@ -15,10 +15,9 @@ This is a test project created by express4.x and the purpose is to test socket.i
 
   	~在单位服务器为ubuntu12.x,在家是最新的14.x
 
-  	~单位端口用3000，客户端用chrome(其实是360极速浏览器),在家因为在unbuntu下，只有firefox,所以只能用9000，点解？详见下面详细描述。所以在bin/www和views/index.html中经常会变化。
 
 =========================
-重要的体会和具体说明
+体会和具体说明
 =========================
 1. 在firefox中要使用websocket，得在地址栏输入about:config，把websocket打开，否则就会报错：ws://.... 无法连接
 

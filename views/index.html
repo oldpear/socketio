@@ -6,15 +6,21 @@
   </head>
   <body>
     <h1>Socket.IO Express Example  1</h1>
+    <p></p>
     <script src="/socket.io/socket.io.js"></script>
     <script>
 //	alert('test');
-//	console.log('test in html');
-      var socket = io('http://192.168.1.202:3000');
+	console.log('test in html');
+      var socket = io.connect('http://localhost:8000'); //正确
+//      var socket = io.connect(); //正确
+//      var socket = io('http://localhost:8000');//正确，同http端口号
+//      var socket = io('');//正确
+//      var socket = io('http://localhost'); //错误写法,不加端口号或者后面端口号不正确,就会报跨域错误，ERR_CONNECTION_REFUSED
+//      var socket = io('');  //这样写不对
       console.log(socket);
       socket.on('welcome', function (data) {
-	console.log('get welcom');
-        console.log(data.text);
+	console.log('got welcome');
+        document.write(data.text);
       });
     </script>
   </body>

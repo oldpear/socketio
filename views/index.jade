@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title} and socket.io example for a chatroom
+  body
+    h1 Socket.IO Express Example
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect()
+      socket.on('welcome', function (data) {
+        console.log(data.text)
+      })
+    </script>

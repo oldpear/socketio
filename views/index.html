@@ -7,6 +7,12 @@
   <body>
     <h1>Socket.IO Express Example  1</h1>
     <p></p>
+    <form id="set-nickname">
+        <label for="nickname">Nickname:</label>
+        <input type="text" id="nickname" />
+	<input type="submit" />
+    </form>
+    <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
 //	alert('test');
@@ -21,6 +27,14 @@
       socket.on('welcome', function (data) {
 	console.log('got welcome');
         document.write(data.text);
+      });
+      jQuery(function($){
+	var nickname = $('#nickname');
+	var setNicknameForm = $('#set-nickname');
+	setNicknameForm.submit(function(event) {
+		event.preventDefault();
+		socket.emit('nickname',nickName.val());
+	});
       });
     </script>
   </body>

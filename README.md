@@ -34,7 +34,7 @@ This is a test project created by express4.x and the purpose is to test socket.i
 
 4. html中如下连接websocket的语句都是正确的：
 
-	a. io.connect();
+	a. io.connect(); //如果socket.io客户端和服务器位于同一个服务器上时，客户端使用io.connnect时可以这样写，用io()也一样，socket.io会自动发现，但是如果跨来源，就得有URL
 
 	b. io.connect('http://localhost:8000’) //端口号必须同express http sever端口号一样
 
@@ -47,3 +47,6 @@ This is a test project created by express4.x and the purpose is to test socket.i
 	a. io.connect('http://localhost')  io('http://localhost')
 
 	b. 或者给出错误的端口号
+
+6. jquery不能连google,屏蔽了，所以还是用cdn库,<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+

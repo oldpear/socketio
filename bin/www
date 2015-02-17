@@ -56,6 +56,9 @@ io.attach(server,{serveClient:true});
 io.on('connection',function(socket){
   //console.log('test in the io.on');
   socket.emit('welcome',{text:'oh,Hi!U r connected!'});
+  socket.on('nickname',function(data){
+	console.log('The server received the following nickname:'+data);
+  });
 });
 
 

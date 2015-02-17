@@ -26,14 +26,24 @@
       console.log(socket);
       socket.on('welcome', function (data) {
 	console.log('got welcome');
-        document.write(data.text);
+        //document.write(data.text);
+	alert(data.text);
       });
       jQuery(function($){
 	var nickname = $('#nickname');
 	var setNicknameForm = $('#set-nickname');
 	setNicknameForm.submit(function(event) {
 		event.preventDefault();
-		socket.emit('nickname',nickName.val());
+		socket.emit('nickname',nickname.val(),function(data){
+			alert('test');
+			console.log(data);
+			if(data){
+				console.log('Nickname set successfully');
+				setNicknameForm.hide();
+			}else{
+				setNicknameForm.prepend('<p>Sorry - that nickname is already taken.</p>');
+			}			
+		});
 	});
       });
     </script>

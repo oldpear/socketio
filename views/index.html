@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Socket.IO Express Example</title>
+    <style type="text/css">
+        form#send-message { display: none; }
+        section#nicknames { width: 300px; float: right; }
+        textarea#message { width: 300px; height: 100px; }
+        section#messages p strong { margin-right: 5px; }
+    </style>
   </head>
   <body>
     <h1>Socket.IO Express Example  1</h1>
@@ -12,22 +18,43 @@
         <input type="text" id="nickname" />
 	<input type="submit" />
     </form>
+    <h3><section><ur><li>online nickname list as follow</li><ul></section></h3>
+    <section id="nicknames"></section>
+    <form id="send-message">
+      <textarea id="message"></textarea>
+      <input type="submit" value="Send message!" />
+    </form>
+    <section id="messages"></section>
     <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
 //	alert('test');
-	console.log('test in html');
+//	console.log('test in html');
       var socket = io.connect('http://localhost:8000'); //正确
 //      var socket = io.connect(); //正确
 //      var socket = io('http://localhost:8000');//正确，同http端口号
 //      var socket = io('');//正确
 //      var socket = io('http://localhost'); //错误写法,不加端口号或者后面端口号不正确,就会报跨域错误，ERR_CONNECTION_REFUSED
 //      var socket = io('');  //这样写不对
-      console.log(socket);
+//      console.log(socket);
       socket.on('welcome', function (data) {
 	console.log('got welcome');
         //document.write(data.text);
 	alert(data.text);
+      });
+      socket.on('nicknames',function(data){
+	var nicknameList = $('#nicknames');
+	var html='<ul>';
+	for(i=0;i<data.length;i++){
+		html += '<li>'+data[i]+'</li>';
+	}
+	nicknameList.empty().append(html);	
+      });	
+      socket.on('user message', function (data) {
+        $('#messages').append($('<p>').append($('<strong>').text(data.nick), data.message));
+      });
+      socket.on('announcement', function (data) {
+        $('#messages').append($('<p>').append($('<em>').text(data.message)));
       });
       jQuery(function($){
 	var nickname = $('#nickname');
@@ -40,11 +67,17 @@
 			if(data){
 				console.log('Nickname set successfully');
 				setNicknameForm.hide();
+				$('#send-message').show();
 			}else{
 				setNicknameForm.prepend('<p>Sorry - that nickname is already taken.</p>');
 			}			
 		});
 	});
+	$('#send-message').submit(function () {
+          	socket.emit('user message', $('#message').val());
+          	$('#message').val('').focus();
+          	return false;
+        });
       });
     </script>
   </body>
